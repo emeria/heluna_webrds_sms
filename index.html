@@ -9,17 +9,17 @@
 <script>
 
   
-function getParams() {
+function getReferralCode() {
     var idx = document.URL.indexOf('?');
     var params = {}; // simple js object
-    referralcode = params[0];
+    return params[0];
 }
   
 window.onload = function() {
 var referralcode = '0000000000';
 var smslink = '';
 var elem = '';
-getParams().then(
+(referralcode = getReferralCode()).then(
 smslink = "sms:?subject=WebRDS Survey&amp;body=Please%20check%20out%20this%20survey%3A%0A%0AFor%20your%20time%2C%20you%20will%20earn%20rewards. http://seanaresearch.qualtrics.com/jfe/form/SV_1LVN5s8p3dlwRLg?referralId="+referralcode).then(
 elem = document.getElementById("loadSMS")).then(
 elem.href = smslink).then(
