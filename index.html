@@ -10,14 +10,27 @@
 var referralcode = '0000000000';
 var smslink = '';
 var elem = '';
+    
+function getParams() {
 
-var params = {}; // simple js object
+    var params = {},
+        pairs = document.URL.split('?')
+               .pop()
+               .split('&');
+
+    for (var i = 0, p; i < pairs.length; i++) {
+           p = pairs[i].split('=');
+           params[ p[0] ] =  p[1];
+    }     
+
+    return params;
+}
+    
 document.onreadystatechange = function(e)
 {
     if (document.readyState === 'complete')
     {
-      var idx = document.URL.indexOf('?');
-      referralcode = params["referralCode"];
+      referralcode = getParams()[0];
       smslink = "sms:?subject=WebRDS Survey&amp;body=Please%20check%20out%20this%20survey%3A%0A%0AFor%20your%20time%2C%20you%20will%20earn%20rewards. http://seanaresearch.qualtrics.com/jfe/form/SV_1LVN5s8p3dlwRLg?referralId="+referralcode;
       console.log(referralcode);
     }
