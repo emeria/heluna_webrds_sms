@@ -27,7 +27,7 @@ document.onreadystatechange = function(e)
 //             console.log(p[1]);
 //         }     
 
-        var url = window.location.href;
+        var url = document.URL;
         var vars = {};
         var hashes = url.split("?")[1];
         var hash = hashes.split('&');
@@ -44,7 +44,7 @@ document.onreadystatechange = function(e)
       console.log(referralcode);
     }
 };
-window.onload = function() {   
+window.ready = function() {   
 
   elem = document.getElementById("loadSMS");
   elem.href = smslink;
